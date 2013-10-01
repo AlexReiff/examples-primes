@@ -1,4 +1,4 @@
-//TEST COMMIT 1
+//TEST COMMIT 2
 
 public class PrintPrimes {
   int numberOfPrimes;
