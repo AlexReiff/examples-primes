@@ -1,4 +1,4 @@
-//TEST COMMIT I didn't change anything
+//TEST COMMIT 1
 
 public class PrintPrimes {
   int numberOfPrimes;
