@@ -33,7 +33,7 @@ public class PrintPrimes {
   }
 
   private void calculateOddPrimes() {
-      boolean loopAgain = true;
+      boolean loopAgain;
       int N;
       int MULT[] = new int[ORDMAX + 1];
 
@@ -42,7 +42,7 @@ public class PrintPrimes {
       int square = 9;
 
       for(int primesFoundSoFar = 1; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
-        while(loopAgain) {
+        do {
           J = J + 2;
           if (J == square) {
         	MULT[ORD] = J;
@@ -60,31 +60,29 @@ public class PrintPrimes {
             }
             N++;
           }
-        }
+        } while (loopAgain);
         listOfPrimes[primesFoundSoFar] = J;
       }
     }
 
     public void printPrimes() {
-        int pageNumber = 1;
-        int pageOffset = 1;
-        while (pageOffset <= numberOfPrimes) {
+        int PAGENUMBER = 1;
+        int PAGEOFFSET = 1;
+        while (PAGEOFFSET <= numberOfPrimes) {
           System.out.println("The First " + numberOfPrimes +
-                               " Prime Numbers --- Page " + pageNumber);
+                               " Prime Numbers --- Page " + PAGENUMBER);
           System.out.println("");
-          for (int rowOffset = pageOffset; rowOffset < pageOffset + RR; rowOffset++){
+          for (int ROWOFFSET = PAGEOFFSET; ROWOFFSET < PAGEOFFSET + RR; ROWOFFSET++){
             for (int C = 0; C < CC;C++) {
-              if (rowOffset + C * RR <= numberOfPrimes) {
-                System.out.format("%10d", listOfPrimes[rowOffset + C * RR]);
+              if (ROWOFFSET + C * RR <= numberOfPrimes) {
+                System.out.format("%10d", listOfPrimes[ROWOFFSET + C * RR]);
               }
             }
             System.out.println("");
           }
           System.out.println("\f");
-          pageNumber = pageNumber + 1;
-          pageOffset = pageOffset + RR * CC;
+          PAGENUMBER = PAGENUMBER + 1;
+          PAGEOFFSET = PAGEOFFSET + RR * CC;
         }
     }
 }
-
-					 
