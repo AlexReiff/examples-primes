@@ -28,7 +28,7 @@ public class PrintPrimes {
        * delegate the task of finding all odd prime numbers to a helper
        * function.
        */
-      listOfPrimes[0] = 2;
+      listOfPrimes[1] = 2;
       calculateOddPrimes();
   }
 
