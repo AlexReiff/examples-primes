@@ -33,7 +33,7 @@ public class PrintPrimes {
   }
 
   private void calculateOddPrimes() {
-      boolean loopAgain;
+      boolean loopAgain = true;
       int N;
       int MULT[] = new int[ORDMAX + 1];
 
@@ -42,7 +42,7 @@ public class PrintPrimes {
       int square = 9;
 
       for(int primesFoundSoFar = 1; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
-        do {
+        while(loopAgain) {
           J = J + 2;
           if (J == square) {
         	MULT[ORD] = J;
@@ -60,7 +60,7 @@ public class PrintPrimes {
             }
             N++;
           }
-        } while (loopAgain);
+        }
         listOfPrimes[primesFoundSoFar] = J;
       }
     }
