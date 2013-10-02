@@ -52,10 +52,12 @@ public class PrintPrimes {
           N = 2;
           loopAgain = false;
           while (N < ORD && !loopAgain) {
-            while (MULT[N] < J)
+            while (MULT[N] < J) {
               MULT[N] = MULT[N] + listOfPrimes[N] + listOfPrimes[N];
-            if (MULT[N] == J)
+            }
+            if (MULT[N] == J) {
               loopAgain = true;
+            }
             N++;
           }
         } while (loopAgain);
@@ -71,9 +73,11 @@ public class PrintPrimes {
                                " Prime Numbers --- Page " + PAGENUMBER);
           System.out.println("");
           for (int ROWOFFSET = PAGEOFFSET; ROWOFFSET < PAGEOFFSET + RR; ROWOFFSET++){
-            for (int C = 0; C < CC;C++)
-              if (ROWOFFSET + C * RR <= numberOfPrimes)
+            for (int C = 0; C < CC;C++) {
+              if (ROWOFFSET + C * RR <= numberOfPrimes) {
                 System.out.format("%10d", listOfPrimes[ROWOFFSET + C * RR]);
+              }
+            }
             System.out.println("");
           }
           System.out.println("\f");
