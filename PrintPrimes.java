@@ -63,24 +63,28 @@ public class PrintPrimes {
       }
     }
 
+    //prints out the prime number in a table with dimensions depending on input
+    //creates multiple tables if a table is smaller than the number of primes
     public void printPrimes() {
         int pageNumber = 1;
-        int pageOffset = 1;
-        while (pageOffset <= numberOfPrimes) {
+        int firstNonprintedPrime = 1;
+        while (firstNonprintedPrime <= numberOfPrimes) {
           System.out.println("The First " + numberOfPrimes +
-                               " Prime Numbers --- Page " + pageNumber);
-          System.out.println("");
-          for (int rowOffset = pageOffset; rowOffset < pageOffset + ROWS; rowOffset++){
+                               " Prime Numbers --- Page " + pageNumber + "\n");
+          for (int currRow = firstNonprintedPrime; currRow < firstNonprintedPrime + ROWS; currRow++){
             for (int currCol = 0; currCol < COLUMNS; currCol++) {
-              if (rowOffset + currCol * ROWS <= numberOfPrimes) {
-                System.out.format("%10d", listOfPrimes[rowOffset + currCol * ROWS]);
+              int nextNum = currRow + currCol * ROWS;
+              if (nextNum <= numberOfPrimes) {
+            	//grabs the prime number that correctly fits into the table
+                System.out.format("%10d", listOfPrimes[nextNum]);
               }
             }
             System.out.println("");
           }
           System.out.println("\f");
-          pageNumber = pageNumber + 1;
-          pageOffset = pageOffset + ROWS * COLUMNS;
+          //the next page starts at the first prime that couldn't fit in the last page 
+          pageNumber++;
+          firstNonprintedPrime += ROWS * COLUMNS;
         }
     }
 }
