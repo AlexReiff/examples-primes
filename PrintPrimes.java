@@ -1,5 +1,3 @@
-//TEST COMMIT 2
-
 public class PrintPrimes {
   int numberOfPrimes;
   int RR;
@@ -35,32 +33,32 @@ public class PrintPrimes {
   }
 
   private void calculateOddPrimes() {
-      boolean JPRIME;
+      boolean loopAgain;
       int N;
       int MULT[] = new int[ORDMAX + 1];
 
       int J = 1;
       int ORD = 2;
-      int SQUARE = 9;
+      int square = 9;
 
       for(int primesFoundSoFar = 1; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
         do {
           J = J + 2;
-          if (J == SQUARE) {
+          if (J == square) {
             ORD = ORD + 1;
-            SQUARE = listOfPrimes[ORD] * listOfPrimes[ORD];
+            square = listOfPrimes[ORD] * listOfPrimes[ORD];
             MULT[ORD - 1] = J;
           }
           N = 2;
-          JPRIME = true;
-          while (N < ORD && JPRIME) {
+          loopAgain = false;
+          while (N < ORD && !loopAgain) {
             while (MULT[N] < J)
               MULT[N] = MULT[N] + listOfPrimes[N] + listOfPrimes[N];
             if (MULT[N] == J)
-              JPRIME = false;
-            N = N + 1;
+              loopAgain = true;
+            N++;
           }
-        } while (!JPRIME);
+        } while (loopAgain);
         listOfPrimes[primesFoundSoFar] = J;
       }
     }
