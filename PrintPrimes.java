@@ -45,9 +45,9 @@ public class PrintPrimes {
         do {
           J = J + 2;
           if (J == square) {
-            ORD = ORD + 1;
+        	MULT[ORD] = J;
+            ORD++;
             square = listOfPrimes[ORD] * listOfPrimes[ORD];
-            MULT[ORD - 1] = J;
           }
           N = 2;
           loopAgain = false;
