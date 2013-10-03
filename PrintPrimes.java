@@ -32,10 +32,12 @@ public class PrintPrimes {
   private void calculateOddPrimes() {
       boolean loopAgain;
       int N;
-      int MULT[] = new int[ORDMAX + 1];
+      int invalidNums[] = new int[ORDMAX + 1];
 
       int currNum = 1;
+      //the index of 3 is 2, since the index of 2 is 1
       int indexOfRootOfSquare = 2;
+      //the first odd prime is always 3, so the first prime square is 19
       int nextSquareNum = 9;
 
       for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
@@ -45,17 +47,18 @@ public class PrintPrimes {
              adds square to list of invalid numbers, prepares to check next square
            */
           if (currNum == nextSquareNum) {
-        	MULT[indexOfRootOfSquare] = currNum;
+        	invalidNums[indexOfRootOfSquare] = currNum;
             indexOfRootOfSquare++;
             nextSquareNum = listOfPrimes[indexOfRootOfSquare] * listOfPrimes[indexOfRootOfSquare];
-          } 
+          }
+          
           N = 2;
           loopAgain = false;
           while (N < indexOfRootOfSquare && !loopAgain) {
-            while (MULT[N] < currNum) {
-              MULT[N] = MULT[N] + listOfPrimes[N] + listOfPrimes[N];
+            while (invalidNums[N] < currNum) {
+              invalidNums[N] += 2 * listOfPrimes[N];
             }
-            if (MULT[N] == currNum) {
+            if (invalidNums[N] == currNum) {
               loopAgain = true;
             }
             N++;
