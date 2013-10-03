@@ -51,7 +51,7 @@ public class PrintPrimes {
           while (N < ORD && !loopAgain) {
             while (MULT[N] < J) {
               MULT[N] = MULT[N] + listOfPrimes[N] + listOfPrimes[N];
-            }
+            }d
             if (MULT[N] == J) {
               loopAgain = true;
             }
@@ -70,11 +70,11 @@ public class PrintPrimes {
         while (firstNonprintedPrime <= numberOfPrimes) {
           System.out.println("The First " + numberOfPrimes +
                                " Prime Numbers --- Page " + pageNumber + "\n");
+          //starts where the last page left off
           for (int currRow = firstNonprintedPrime; currRow < firstNonprintedPrime + ROWS; currRow++){
             for (int currCol = 0; currCol < COLUMNS; currCol++) {
               int nextNum = currRow + currCol * ROWS;
               if (nextNum <= numberOfPrimes) {
-            	//grabs the prime number that correctly fits into the table
                 System.out.format("%10d", listOfPrimes[nextNum]);
               }
             }
