@@ -35,20 +35,23 @@ public class PrintPrimes {
       int MULT[] = new int[ORDMAX + 1];
 
       int currNum = 1;
-      int ORD = 2;
-      int square = 9;
+      int indexOfRootOfSquare = 2;
+      int nextSquareNum = 9;
 
       for(int primesFoundSoFar = 2; primesFoundSoFar <= numberOfPrimes; primesFoundSoFar++) {
         do {
           currNum += 2;
-          if (currNum == square) {
-        	MULT[ORD] = currNum;
-            ORD++;
-            square = listOfPrimes[ORD] * listOfPrimes[ORD];
-          }
+          /* checks if the current number is a square of a previous prime number
+             adds square to list of invalid numbers, prepares to check next square
+           */
+          if (currNum == nextSquareNum) {
+        	MULT[indexOfRootOfSquare] = currNum;
+            indexOfRootOfSquare++;
+            nextSquareNum = listOfPrimes[indexOfRootOfSquare] * listOfPrimes[indexOfRootOfSquare];
+          } 
           N = 2;
           loopAgain = false;
-          while (N < ORD && !loopAgain) {
+          while (N < indexOfRootOfSquare && !loopAgain) {
             while (MULT[N] < currNum) {
               MULT[N] = MULT[N] + listOfPrimes[N] + listOfPrimes[N];
             }
